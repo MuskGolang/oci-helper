@@ -41,7 +41,7 @@ logging:
 # 密钥文件存放目录（如果是docker部署则不用修改）
 oci-cfg:
   boot-broadcast-url: https://backend.oci-helper.de5.net/api/boot
-  boot-broadcast-channel: https://api.telegram.org/bot8252348609:AAHQsW95nrozzWpXRjKRVa0Ul4oyWrxn_wI/sendMessage?chat_id=@oci_helper
+  boot-broadcast-channel: https://backend.oci-helper.de5.net/api/notify
 #  key-dir-path: /app/oci-helper/keys
 #  key-dir-path: C:\Users\Yohann\Desktop
   key-dir-path: C:\Users\yohann_fan\Desktop\test\oci-helper
