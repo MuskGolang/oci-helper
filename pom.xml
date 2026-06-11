@@ -11,7 +11,7 @@
         <java.version>21</java.version>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
-        <oci-version>3.83.0</oci-version>
+        <oci-version>3.89.1</oci-version>
         <spring-boot.version>3.5.0</spring-boot.version>
         <spring-ai.version>1.0.0-M6</spring-ai.version>
     </properties>
@@ -89,6 +89,11 @@
         <dependency>
             <groupId>com.oracle.oci.sdk</groupId>
             <artifactId>oci-java-sdk-ospgateway</artifactId>
+            <version>${oci-version}</version>
+        </dependency>
+        <dependency>
+            <groupId>com.oracle.oci.sdk</groupId>
+            <artifactId>oci-java-sdk-usageapi</artifactId>
             <version>${oci-version}</version>
         </dependency>
 

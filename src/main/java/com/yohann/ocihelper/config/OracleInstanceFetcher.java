@@ -43,6 +43,7 @@ import com.oracle.bmc.ospgateway.requests.GetSubscriptionRequest;
 import com.oracle.bmc.ospgateway.requests.ListSubscriptionsRequest;
 import com.oracle.bmc.ospgateway.responses.GetSubscriptionResponse;
 import com.oracle.bmc.ospgateway.responses.ListSubscriptionsResponse;
+import com.oracle.bmc.usageapi.UsageapiClient;
 import com.oracle.bmc.workrequests.WorkRequestClient;
 import com.yohann.ocihelper.bean.constant.CacheConstant;
 import com.yohann.ocihelper.bean.constant.OciInstanceConstant;
@@ -90,6 +91,7 @@ public class OracleInstanceFetcher implements Closeable {
     private final NetworkLoadBalancerClient networkLoadBalancerClient;
     private final IdentityDomainsClient identityDomainsClient;
     private final LimitsClient limitsClient;
+    private final UsageapiClient usageapiClient;
     private final SimpleAuthenticationDetailsProvider provider;
     private SysUserDTO user;
     private String compartmentId;
@@ -109,6 +111,7 @@ public class OracleInstanceFetcher implements Closeable {
         networkLoadBalancerClient.close();
         identityDomainsClient.close();
         limitsClient.close();
+        usageapiClient.close();
     }
 
     public OracleInstanceFetcher(SysUserDTO user) {
@@ -146,6 +149,7 @@ public class OracleInstanceFetcher implements Closeable {
         networkLoadBalancerClient = applyProxy(NetworkLoadBalancerClient.builder(), proxyCfg).build(provider);
         identityDomainsClient = applyProxy(IdentityDomainsClient.builder(), proxyCfg).build(provider);
         limitsClient = applyProxy(LimitsClient.builder(), proxyCfg).build(provider);
+        usageapiClient = applyProxy(UsageapiClient.builder(), proxyCfg).build(provider);
         this.provider = provider;
         this.proxyCfg = proxyCfg;
         compartmentId = StrUtil.isBlank(ociCfg.getCompartmentId()) ? findRootCompartment(identityClient, provider.getTenantId()) : ociCfg.getCompartmentId();
